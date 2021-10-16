@@ -1,13 +1,58 @@
-body {
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* google font poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* common background-color */
+.common-bg {
+  background: #3bb77e;
+}
+
+/* navigation css */
+
+.left-column a {
+  text-decoration: none !important;
+  color: #666;
+  padding: 0 10px;
+  border-right: 1px solid rgb(192, 173, 173);
+}
+a {
+  text-decoration: none !important;
+  color: #666;
+}
+
+/* // banner background */
+
+.banner {
+  background-image: url("https://i.ibb.co/jrZgq2D/geometric-desktop-background-white-abstract-design-vector-53876-144666.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* // slider image  */
+.slider-image {
+  height: 400px;
+}
+
+/* //  slider 1 background */
+.slider-1 {
+  background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+}
+.slider-2 {
+  background-image: url("https://i.pinimg.com/736x/22/f2/96/22f29680afef34cdf68076f9bfd3451f.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
 }

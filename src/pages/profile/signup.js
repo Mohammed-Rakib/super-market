@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleSignin from "./googleSignin";
+import useFirebase from "../../firebase/useFirebase";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
-  const [userInfo, setUserInfo] = useState(null);
-  console.log(userInfo);
+  const { signUpWithEmailAndPassword, setCurrentUser } = useFirebase();
+  const history = useHistory();
 
   const {
     register,
@@ -13,7 +15,16 @@ const Signup = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    setUserInfo(data);
+    signUpWithEmailAndPassword(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        setCurrentUser(user);
+        history.push("/profile");
+      })
+      .catch((err) => {
+        const errorMessage = err.message;
+        console.log(errorMessage);
+      });
   };
 
   return (
@@ -73,6 +84,7 @@ const Signup = () => {
                 })}
                 className=" focus:outline-none w-100 border p-3 rounded my-3 border-green-400"
                 placeholder="Password"
+                type="password"
                 autoComplete="off"
                 name="password"
               />

@@ -1,14 +1,18 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import useFirebase from "../../firebase/useFirebase";
+import { useHistory } from "react-router-dom";
 
 const GoogleSignin = () => {
-  const { signInWithGoogle, setCurrentUser } = useFirebase();
+  const { signInWithGoogle, setCurrentUser, currentUser } = useFirebase();
+  const history = useHistory();
+
   const googleSigninHandler = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
         setCurrentUser(user);
+        history.push("/profile");
       })
       .catch((err) => {
         const errorMessage = err.message;

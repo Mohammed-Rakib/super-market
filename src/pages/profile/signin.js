@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleSignin from "./googleSignin";
+import { useHistory } from "react-router-dom";
+import useFirebase from "../../firebase/useFirebase";
 
 const Signin = () => {
-  const [userInfo, setUserInfo] = useState(null);
-  console.log(userInfo);
+  const { logInWithEmailAndPassword, setCurrentUser, error, setError } =
+    useFirebase();
+  const history = useHistory();
 
   const {
     register,
@@ -13,7 +16,17 @@ const Signin = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = (data) => {
-    setUserInfo(data);
+    logInWithEmailAndPassword(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        setCurrentUser(user);
+        setError(null);
+        history.push("/profile");
+      })
+      .catch((err) => {
+        const errorMessage = err.message;
+        setError(errorMessage);
+      });
   };
 
   return (
@@ -25,7 +38,7 @@ const Signin = () => {
             <p>
               Don't have an account?
               <Link
-                to="/profile"
+                to="/signup"
                 className="text-green-600 font-semibold hover:text-green-900"
               >
                 Register
@@ -65,6 +78,9 @@ const Signin = () => {
               <span className="text-red-500 text-sm">
                 {errors.password?.type === "pattern" &&
                   "password  must be eight characters or longer"}
+              </span>
+              <span className="text-red-500 text-sm">
+                {error !== null && "user doesn't exist"}
               </span>
 
               <button

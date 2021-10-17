@@ -8,6 +8,7 @@ import { FcMenu } from "react-icons/fc";
 import { Offcanvas } from "react-bootstrap";
 import OffCanvasMenu from "./OffCanvasMenu";
 import NavMenu from "./NavMenu";
+import useFirebase from "../../firebase/useFirebase";
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
@@ -18,6 +19,8 @@ const Navigation = () => {
     color: "#3bb77e",
     fontWeight: "bold",
   };
+
+  const { currentUser } = useFirebase();
   return (
     <div className="py-3 ">
       <div className="w-9/12 mx-auto flex justify-between">
@@ -96,14 +99,25 @@ const Navigation = () => {
             <MdFavoriteBorder className="text-2xl font-bold" />
             <span className="xl:block hidden">Wishlist</span>
           </NavLink>
-          <NavLink
-            activeStyle={activeStyle}
-            to="/profile"
-            className="flex text-gray-500 space-x-1 items-center"
-          >
-            <AiOutlineUser className="text-2xl font-bold" />
-            <span className="xl:block hidden">My Profile</span>
-          </NavLink>
+          {currentUser ? (
+            <NavLink
+              activeStyle={activeStyle}
+              to="/profile"
+              className="flex text-gray-500 space-x-1 items-center"
+            >
+              <AiOutlineUser className="text-2xl font-bold" />
+              <span className="xl:block hidden">My Profile</span>
+            </NavLink>
+          ) : (
+            <NavLink
+              activeStyle={activeStyle}
+              to="/signup"
+              className="flex text-gray-500 space-x-1 items-center"
+            >
+              <AiOutlineUser className="text-2xl font-bold" />
+              <span className="xl:block hidden">Account</span>
+            </NavLink>
+          )}
         </div>
       </div>
       <div className="w-9/12 mx-auto">

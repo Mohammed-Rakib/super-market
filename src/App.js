@@ -1,9 +1,11 @@
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "./firebase/PrivateRoute";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Signin from "./pages/profile/signin";
 import Signup from "./pages/profile/signup";
 import Header from "./pages/shared/Header";
+import Shop from "./pages/shop/Shop";
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
         <Route path="/profile">
           <Profile />
         </Route>
+        <PrivateRoute path="/shop">
+          <Shop />
+        </PrivateRoute>
         <Route path="/signup">
           <Signup />
         </Route>

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { MarketContext } from "./Context";
+import { CartContext } from "./Context";
 
 const UseContext = () => {
-  return useContext(MarketContext);
+  return useContext(CartContext);
 };
 
 export default UseContext;

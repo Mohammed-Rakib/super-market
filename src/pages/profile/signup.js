@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleSignin from "./googleSignin";
 import useFirebase from "../../firebase/useFirebase";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Signup = () => {
   const { signUpWithEmailAndPassword, setCurrentUser } = useFirebase();
   const history = useHistory();
+  const location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
 
   const {
     register,
@@ -17,9 +20,8 @@ const Signup = () => {
   const onSubmit = (data) => {
     signUpWithEmailAndPassword(data.email, data.password)
       .then((result) => {
-        const user = result.user;
-        setCurrentUser(user);
-        history.push("/profile");
+        setCurrentUser(result.user);
+        history.replace(from);
       })
       .catch((err) => {
         const errorMessage = err.message;

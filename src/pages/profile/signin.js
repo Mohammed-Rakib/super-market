@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import GoogleSignin from "./googleSignin";
-import { useHistory } from "react-router-dom";
 import useFirebase from "../../firebase/useFirebase";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Signin = () => {
-  const { logInWithEmailAndPassword, setCurrentUser, error, setError } =
+  const { logInWithEmailAndPassword, error, setError, setCurrentUser } =
     useFirebase();
-  const history = useHistory();
 
+  const history = useHistory();
+  const location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  // import useForm from react-hook-form
   const {
     register,
     formState: { errors },
@@ -18,10 +23,9 @@ const Signin = () => {
   const onSubmit = (data) => {
     logInWithEmailAndPassword(data.email, data.password)
       .then((result) => {
-        const user = result.user;
-        setCurrentUser(user);
+        setCurrentUser(result.user);
+        history.replace(from);
         setError(null);
-        history.push("/profile");
       })
       .catch((err) => {
         const errorMessage = err.message;

@@ -29,7 +29,7 @@ const Slider = () => {
         </div>
       </Carousel.Item>
       <Carousel.Item className="slider-2 rounded-xl">
-        <h1 className="pt-5 px-3 md:text-6xl text-2xl text-black">
+        <h1 className="pt-5 px-3 md:text-6xl text-2xl text-gray-200">
           Original Laptop <br /> big discount
         </h1>
         <h5 className="p-3 text-gray-500">Signup for the daily newsletter</h5>

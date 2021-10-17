@@ -10,7 +10,7 @@ const Banner = () => {
         </div>
         <div className="col-lg-3 lg:block hidden">
           <img
-            src="https://tech2sports.com/wp-content/uploads/2021/06/e0nk-pdxeaa1fy6.jpg"
+            src="https://www.gizmochina.com/wp-content/uploads/2021/10/macbook-pro-2021-renders.jpg"
             alt=""
             className="img-fluid rounded-xl h-100"
           />

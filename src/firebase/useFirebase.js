@@ -34,15 +34,17 @@ const useFirebase = () => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  // get currentUser
+  // observer user state change
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
       } else {
         setCurrentUser(null);
       }
     });
+
+    return () => unsubscribe;
   }, [auth]);
 
   // sign out

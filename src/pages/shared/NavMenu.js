@@ -11,7 +11,7 @@ const NavMenu = () => {
     <div className=" my-3 md:flex justify-between items-center hidden  ">
       <div className="flex space-x-7 items-center">
         <Link
-          to="/"
+          to="/products"
           className="my-3  bg-green-400 text-white text-center p-2 rounded"
         >
           Browse All Categories

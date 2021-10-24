@@ -32,7 +32,7 @@ a {
 /* // banner background */
 
 .banner {
-  background-image: url("https://previews.123rf.com/images/eigens/eigens1909/eigens190900613/129459431-lavender-pastel-gray-and-light-gray-colors-illustration-abstract-cloudy-texture-background-with-spac.jpg");
+  background-image: url("https://i.pinimg.com/originals/80/82/5c/80825c6b73c2e15affd91a473339b0fb.png");
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,11 +48,22 @@ a {
   background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 400px;
+  height: 450px;
 }
 .slider-2 {
-  background-image: url("https://qph.fs.quoracdn.net/main-qimg-aba88460b7cf01d7b0aaccfcdf78ee7c");
+  background-image: url("https://cdn.pixabay.com/photo/2019/08/21/16/18/laptop-4421417_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 400px;
+  height: 450px;
+}
+
+/* // product  */
+.product {
+  text-align: center;
+  border-radius: 7 px;
+  box-shadow: 0px 2px 12px 0px #80808047;
+}
+
+.product-image:hover {
+  transform: scale(1.2);
 }
